@@ -1,0 +1,26 @@
+{
+    "services": [
+        {"id": 0, "name": "Landscape Maintenance (pruning / weed removal)", "price": 10, "per": "/ Hr"},
+        {"id": 1, "name": "Treatment & fertilization", "price": 0.003, "per": "/ Square Foot (typically 3x / year)" },
+        {"id": 2, "name": "Lawn Thatching / clean up", "price": 0.004, "per": "/ Square Foot (typically done weekly)" },
+        {"id": 3, "name": "Grass cutting", "price": 0.004, "per": "/ Square Foot (typically 1x / year)" },
+        {"id": 4, "name": "Mulching", "price": 0.001, "per": "/ Square Foot" },
+        {"id": 5, "name": "Seeding", "price": 0.007, "per": "/ Square Foot" },
+        {"id": 6, "name": "Aeration", "price": 0.003, "per": "/ Square Foot (typically 1x / year)" },
+        {"id": 7, "name": "Tree-health inspections", "price": 5, "per": "/ Tree" },
+        {"id": 8, "name": "Tree trimming", "price": 40, "per":  "/ Tree" },
+        {"id": 9, "name": "Shrub pruning", "price": 10, "per":  "/ Hr" },
+        {"id": 10, "name": "Weed management", "price": 10, "per":  "/ Hr" },
+        {"id": 11, "name": "Tree removal", "price": 40, "per":  "/ Hr" },
+        {"id": 12, "name": "Landscape Construction", "price": 40, "per":  "/ Hr + Materials" },
+        {"id": 13, "name": "Decking & fencing", "price": 40, "per":  "/ Hr + Materials" },
+        {"id": 14, "name": "Retaining walls", "price": 40, "per":  "/ Hr + Materials" },
+        {"id": 15, "name": "Brick paving & pavers", "price": 40, "per":  "/ Hr + Materials" },
+        {"id": 16, "name": "Patios & pergolas", "price": 40, "per":  "/ Hr + Materials" },
+        {"id": 17, "name": "Water features & ponds", "price": 50, "per":  "/ Hr + Materials" },
+        {"id": 18, "name": "Planting trees & shrubs", "price": 40, "per":  "/ Hr + Materials" },
+        {"id": 19, "name": "Artificial grass / Astroturf", "price": 40, "per":  "/ Hr + Materials" },
+        {"id": 20, "name": "Outdoor lighting / heating & firepits", "price": 40, "per":  "/ Hr + Materials" },
+        {"id": 21, "name": "Lawn / sod installation", "price": 20, "per":  "/ Hr + Materials" }
+    ]
+}
