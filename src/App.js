@@ -1,6 +1,6 @@
 import './App.css';
-import data from './data.json'
 import { useEffect, useReducer, useState } from 'react';
+import axios from "axios";
 
 function App() {
   const [services, setServices] = useState(null)
@@ -8,13 +8,26 @@ function App() {
   const [price, setPrice] = useState(0)
   
   useEffect(() => {
-    setServices(data.services)
+    async function fetchData() {
+      try {
+        const response = await axios({
+          method: 'GET',
+          url: 'http://localhost:3030',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        setServices(response.data.services)
+      } catch(err) {
+        console.error(err)
+      }
+    }
+    fetchData()
   }, [services])
 
   useEffect(() => {
     let total = 0
     quoteItems.map(quoteItem => {
-      
       total += (quoteItem.quantity * quoteItem.price)
     })
     total = total.toFixed(2)
@@ -57,7 +70,7 @@ function App() {
   );
 }
 
-export default App;
+export default App
 /*
 curl --location --request GET 'https://api.twitch.tv/helix/search/channels?query=a_seagull' --header 'client-id: dqaq5reedo8qw06tfyou3n498kpvc3' --header 'Authorization: Bearer zevtehfbrf0oonyewf32bhql74tj3u'
 */
