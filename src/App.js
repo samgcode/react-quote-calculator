@@ -1,24 +1,41 @@
-import './App.css';
-import { useEffect, useReducer, useState } from 'react';
+import './App.css'
+import { useEffect, useState } from 'react'
+import { css } from "@emotion/react";
+import BarLoader from 'react-spinners/BarLoader'
 import axios from "axios";
+
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+  margin-top: 30px;
+`;
 
 function App() {
   const [services, setServices] = useState(null)
   const [quoteItems, setQuoteItems] = useState([])
   const [price, setPrice] = useState(0)
+  const [loading, setLoading ] = useState(true)
+  const [error, setError] = useState(false)
+  const [showForm, setShowForm] = useState(false)
   
   useEffect(() => {
     async function fetchData() {
+      // setLoading(true)
+      setError(false)
       try {
         const response = await axios({
           method: 'GET',
           url: 'http://localhost:3030',
-          headers: {
-            'Content-Type': 'application/json'
-          }
+          headers: { 'Content-Type': 'application/json' }
         })
+        setLoading(false)
+        setShowForm(true)
         setServices(response.data.services)
       } catch(err) {
+        setLoading(false)
+        setShowForm(false)
+        setError(true)
         console.error(err)
       }
     }
@@ -27,7 +44,7 @@ function App() {
 
   useEffect(() => {
     let total = 0
-    quoteItems.map(quoteItem => {
+    quoteItems.forEach(quoteItem => {
       total += (quoteItem.quantity * quoteItem.price)
     })
     total = total.toFixed(2)
@@ -55,16 +72,24 @@ function App() {
   return (
     <div>
       <header>
-        <ul>
-          {(services === null) ? null : services.map((service) => (
-            <li key={service.name}>
-              <label htmlFor={service.name}>{service.name}</label>
-              <input type="number" id={service.id} onChange={handleChange}></input>
-              <span> ${service.price} per {service.per}</span>
-            </li>
-          ))}
-        </ul>
-        <h1>{price}</h1>
+        <BarLoader color={"#000"} loading={loading} css={override} size={150}/>
+        {showForm ? <div>
+            <ul>
+              {(services === null) ? null : services.map((service) => (
+                <li key={service.name}>
+                  <label htmlFor={service.name}>{service.name}</label>
+                  <input type="number" id={service.id} onChange={handleChange}></input>
+                  <span> ${service.price} per {service.per}</span>
+                </li>
+              ))}
+            </ul>
+            <h1>{price}</h1>
+          </div> : null 
+        }
+        {error ? <h2 className="error">
+            error occured fetching services
+          </h2> : null
+        }
       </header>
     </div>
   );

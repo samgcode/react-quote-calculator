@@ -40,3 +40,8 @@ ul {
     transform: rotate(360deg);
   }
 }
+
+.error {
+  color:red;
+  margin-left: 10px
+}
